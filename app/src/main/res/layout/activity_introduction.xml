@@ -111,14 +111,17 @@ or move into your new place when it works best for you"
         </RelativeLayout>
     </LinearLayout>
 
-    <Button
+    <android.widget.Button
         android:id="@+id/intro_get_started"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginHorizontal="5dp"
+        android:paddingVertical="20dp"
+        android:layout_marginVertical="5dp"
+        android:background="@drawable/btn_bg"
         android:textSize="20dp"
         android:text="Get Started"
+        android:textAllCaps="false"
         android:textColor="@color/lugg_blue_dark"
         android:backgroundTint="@color/lugg_yellow"
 

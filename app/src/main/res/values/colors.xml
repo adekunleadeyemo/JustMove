@@ -6,4 +6,5 @@
     <color name="lugg_blue_light">#6B80BF</color>
     <color name="lugg_blue_dark">#3C4473</color>
     <color name="lugg_white">#F2F2F2</color>
+    <color name="lugg_white_dark">#D7D7D9</color>
 </resources>

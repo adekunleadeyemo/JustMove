@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lugg_blue_dark"
+    tools:context=".Login">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="20dp"
+        android:id="@+id/user_login_nav"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/back_arrow"
+            app:tint="@color/lugg_yellow"
+            android:id="@+id/user_login_back_arrow"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/user_login_back_arrow"
+            app:layout_constraintBottom_toBottomOf="@id/user_login_back_arrow"
+            app:layout_constraintTop_toTopOf="@id/user_login_back_arrow"
+            android:text="Complete Profile"
+            android:textSize="20dp"
+            android:textColor="@color/lugg_white"
+            android:paddingHorizontal="20dp"
+            />
+
+        <TextView
+            android:id="@+id/user_login_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/user_login_back_arrow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/user_login_back_arrow"
+            android:text="Save"
+            android:textColor="@color/lugg_yellow" />
+
+        <!--        add progress roller-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/user_login_nav"
+        app:layout_constraintBottom_toTopOf="@id/user_form"
+        android:paddingVertical="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/btn_bg"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/face_book_icon" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Complete Using Facebook"
+            android:textSize="20dp"
+            android:textColor="@color/lugg_blue_dark"
+            />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/user_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/text_bg"
+        android:layout_marginHorizontal="20dp"
+
+        >
+        <ImageView
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:src="@drawable/person_icon"
+            android:id="@+id/user_icon"
+            app:layout_constraintBottom_toBottomOf="@id/user_login_fname"
+            />
+        <EditText
+            android:paddingTop="35dp"
+            android:id="@+id/user_login_fname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/user_login_lname"
+            app:layout_constraintStart_toEndOf="@id/user_icon"
+            android:background="@drawable/text_bottom_border"
+            android:layout_marginEnd="15dp"
+            android:paddingBottom="10dp"
+            android:inputType="text"
+            android:hint="First Name"
+            android:textSize="14dp"
+            android:textColorHint="@color/lugg_white_dark"
+            android:layout_marginBottom="25dp"
+            android:layout_marginStart="60dp"
+                />
+        <EditText
+
+            android:id="@+id/user_login_lname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/user_login_email"
+            android:background="@drawable/text_bottom_border"
+            android:layout_marginEnd="15dp"
+            android:paddingVertical="10dp"
+            android:inputType="text"
+            android:hint="Last Name"
+            android:textSize="14dp"
+            android:textColorHint="@color/lugg_white_dark"
+            android:layout_marginBottom="25dp"
+            android:layout_marginStart="60dp"
+            />
+        <EditText
+            android:id="@+id/user_login_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/user_login_phone_number"
+            android:background="@drawable/text_bottom_border"
+            android:layout_marginEnd="15dp"
+            android:paddingVertical="10dp"
+            android:inputType="textEmailAddress"
+            android:hint="Email"
+            android:textSize="14dp"
+            android:textColorHint="@color/lugg_white_dark"
+            android:layout_marginBottom="35dp"
+            android:layout_marginStart="60dp"
+            />
+        <EditText
+
+            android:id="@+id/user_login_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/text_bottom_border"
+            android:layout_marginEnd="15dp"
+            android:paddingVertical="10dp"
+            android:inputType="phone"
+            android:hint="Phone Number"
+            android:textSize="14dp"
+            android:textColorHint="@color/lugg_white_dark"
+            android:layout_marginBottom="35dp"
+            android:layout_marginStart="60dp"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

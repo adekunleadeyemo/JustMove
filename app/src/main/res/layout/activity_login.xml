@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lugg_blue_dark"
+    tools:context=".Login">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="20dp"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/back_arrow"
+            app:tint="@color/lugg_yellow"
+            android:id="@+id/login_back_arrow"
+            />
+
+        <TextView
+            android:transitionName="phone_number"
+            android:id="@+id/login_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/login_back_arrow"
+            app:layout_constraintBottom_toBottomOf="@id/login_back_arrow"
+            app:layout_constraintTop_toTopOf="@id/login_back_arrow"
+            android:text="Phone Number"
+            android:textSize="20dp"
+            android:textColor="@color/lugg_white"
+            android:paddingHorizontal="20dp"
+            />
+
+        <TextView
+            android:transitionName="next"
+            android:id="@+id/login_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/login_back_arrow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/login_back_arrow"
+            android:text="Next"
+            android:textColor="@color/lugg_yellow" />
+
+<!--        add progress roller-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toTopOf="@id/login_text"
+    android:background="@drawable/text_bg"
+    android:layout_margin="20dp" >
+
+    <EditText
+        android:transitionName="phone_number"
+        android:id="@+id/login_text_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/login_text"
+        android:background="@drawable/text_bottom_border"
+        android:layout_margin="15dp"
+        android:paddingVertical="10dp"
+        android:inputType="phone"
+        android:hint="Enter Phone Number"
+        android:textSize="14dp"
+        android:textColorHint="@color/lugg_white_dark"
+        />
+</LinearLayout>
+
+
+    <TextView
+        android:transitionName="phone_number_text"
+        android:id="@+id/login_text"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textAlignment="center"
+        android:textColor="@color/lugg_white_dark"
+        android:text="We need your phone number so we can give you updates on your moves"
+        />
+
+    <TextView
+        android:id="@+id/login_resend"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/login_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginVertical="10dp"
+        android:textColor="@color/lugg_yellow"
+        android:text="Resend Code"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

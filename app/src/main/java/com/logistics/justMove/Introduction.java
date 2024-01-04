@@ -2,9 +2,11 @@ package com.logistics.justMove;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -24,6 +26,8 @@ public class Introduction extends AppCompatActivity {
     TextView intro_header1;
     TextView intro_header2;
 
+    Button get_started_btn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +45,15 @@ public class Introduction extends AppCompatActivity {
         intro_header1 = findViewById(R.id.intro_header_1);
         intro_header2 = findViewById(R.id.intro_header_2);
 
+        get_started_btn = findViewById(R.id.intro_get_started);
+
         nav_fwd.setOnClickListener(e -> forwardNavigation());
 
         nav_bk.setOnClickListener(e -> backwardNavigation());
+
+        get_started_btn.setOnClickListener( e -> {
+            startActivity(new Intent(Introduction.this, Login.class));
+        });
     }
 
     private void forwardNavigation () {
