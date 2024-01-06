@@ -64,7 +64,11 @@ public class locationSearch extends AppCompatActivity {
                         @Nullable String changeType = getIntent().getExtras().getString("change");
 
                         if(changeType.equals("pickup")){
+                           @Nullable String dl_addr = getIntent().getExtras().getString("delivery");
                             intent.putExtra("pickup",address.getAddressLine(0));
+                            if(dl_addr != null && !dl_addr.isEmpty()){
+                                intent.putExtra("delivery",dl_addr);
+                            }
                             intent.putExtra("change","pickup");
                             startActivity(intent);
                         }
