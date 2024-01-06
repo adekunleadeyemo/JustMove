@@ -33,9 +33,7 @@ public class User_login extends AppCompatActivity {
         save = findViewById(R.id.user_login_save);
         arrow_bk = findViewById(R.id.user_login_back_arrow);
 
-        intent = new Intent(User_login.this, Home.class);
-
-        startActivity(intent);
+ save.setOnClickListener(e -> startActivity(new Intent(User_login.this, Home_page.class)));
 
 
     }

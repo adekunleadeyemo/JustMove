@@ -13,6 +13,21 @@
         android:theme="@style/Theme.JustMove"
         tools:targetApi="31">
         <activity
+            android:name=".Location"
+            android:exported="false" />
+        <activity
+            android:name=".locationSearch"
+            android:exported="false" />
+        <activity
+            android:name=".Home_page"
+            android:exported="false" />
+        <activity
+            android:name=".User_login"
+            android:exported="false" />
+        <activity
+            android:name=".Login"
+            android:exported="false" />
+        <activity
             android:name=".Introduction"
             android:exported="false" />
         <activity
@@ -24,6 +39,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyA3h6cKqEri6qxNLO9Gc1iv8J5-JudKcLY" />
     </application>
 
 </manifest>
