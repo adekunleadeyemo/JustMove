@@ -65,15 +65,19 @@
             android:transitionName="phone_number"
             android:id="@+id/login_text_input"
             android:layout_width="match_parent"
+            android:lineBreakStyle="strict"
+            android:lineBreakWordStyle="phrase"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@id/login_text"
             android:background="@drawable/text_bottom_border"
             android:layout_margin="15dp"
             android:paddingVertical="10dp"
             android:inputType="text"
+
             android:hint="Enter Item Description here"
             android:textSize="14dp"
             android:textColorHint="@color/lugg_white_dark"
+            android:textColor="@color/lugg_white_dark"
             />
     </LinearLayout>
     <android.widget.Button

@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Vehicle extends AppCompatActivity {
 
@@ -30,7 +31,11 @@ public class Vehicle extends AppCompatActivity {
     TextView car_price;
     SwitchCompat car_discount_btn;
 
+    Intent intent;
+
     TextView next_btn;
+    Button vehicleContinue;
+    ImageView vehicle_back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,8 +57,11 @@ public class Vehicle extends AppCompatActivity {
         car_price = findViewById(R.id.vehicle_pricing);
         car_discount_btn = findViewById(R.id.set_vehicle_discount);
         next_btn = findViewById(R.id.vehicle_next);
+        vehicleContinue = findViewById(R.id.vehicle_continue);
+        vehicle_back = findViewById(R.id.vehicle_back_arrow);
 
-        Intent intent = new Intent(Vehicle.this, SetTime.class);
+        intent = new Intent(Vehicle.this, SetTime.class);
+        intent.putExtra("vehicle",-1);
 
 
         sm_car.setOnClickListener(e -> {
@@ -121,9 +129,27 @@ public class Vehicle extends AppCompatActivity {
             intent.putExtra("price","$349.4 + $2.76 per labor min");
         });
 
-        next_btn.setOnClickListener( e -> {
-            startActivity(intent);
+        next_btn.setOnClickListener( e -> proceedToNextActivity());
+        vehicleContinue.setOnClickListener(e -> proceedToNextActivity());
+        vehicle_back.setOnClickListener(e -> {
+            Intent itn2 = new Intent(Vehicle.this, Location.class);
+            itn2.putExtra("change","pickup");
+            startActivity(itn2);
         });
 
+
+    }
+
+    private  void proceedToNextActivity(){
+        if(intent.getExtras().getInt("vehicle") != -1){
+            intent.putExtra("pk_addr_1", getIntent().getExtras().getString("pk_addr_1"));
+            intent.putExtra("pk_addr_2", getIntent().getExtras().getString("pk_addr_2"));
+            intent.putExtra("dl_addr_1", getIntent().getExtras().getString("dl_addr_1"));
+            intent.putExtra("dl_addr_2", getIntent().getExtras().getString("dl_addr_2"));
+            startActivity(intent);
+        }
+        else{
+            Toast.makeText(Vehicle.this,"Select Vehicle",Toast.LENGTH_LONG).show();
+        }
     }
 }

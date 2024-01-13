@@ -18,6 +18,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.logistics.justMove.Models.JustMoveTime;
 import com.logistics.justMove.Utils.JustMoveDateFormat;
@@ -33,6 +34,7 @@ public class SetTime extends AppCompatActivity {
     TextView currDate;
     TextView currTime;
     Button continue_btn;
+    TextView time_next;
     ImageView back_btn;
 
     FrameLayout dateFragment;
@@ -43,6 +45,7 @@ public class SetTime extends AppCompatActivity {
 
     ImageView time_vehicle;
     TextView pk_txt;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,12 +61,32 @@ public class SetTime extends AppCompatActivity {
         nav_txt = findViewById(R.id.time_nav_txt);
         time_vehicle = findViewById(R.id.time_vehicle_img);
         pk_txt = findViewById(R.id.pickup_txt);
+        time_next = findViewById(R.id.time_next);
 
         time_vehicle.setImageResource(getIntent().getExtras().getInt("vehicle"));
         currDate.setText(getIntent().getExtras().getString("price"));
         timeTxt.setText(getIntent().getExtras().getString("price"));
 
+        intent = new Intent(SetTime.this, Item_Details.class);
+
         replaceFragment(new SetDateFragment(findViewById(R.id.curr_date),findViewById(R.id.time_txt), findViewById(R.id.pickup_txt)), R.id.date_fragment);
+
+        time_next.setOnClickListener(e -> {
+           if(continue_btn.getTransitionName().equals("continue") && !currTime.getText().toString().isEmpty()){
+               intent.putExtra("date",currDate.getText().toString());
+               intent.putExtra("time", currTime.getText().toString());
+               intent.putExtra("vehicle",getIntent().getExtras().getInt("vehicle"));
+               intent.putExtra("price",getIntent().getExtras().getString("price"));
+               intent.putExtra("pk_addr_1", getIntent().getExtras().getString("pk_addr_1"));
+               intent.putExtra("pk_addr_2", getIntent().getExtras().getString("pk_addr_2"));
+               intent.putExtra("dl_addr_1", getIntent().getExtras().getString("dl_addr_1"));
+               intent.putExtra("dl_addr_2", getIntent().getExtras().getString("dl_addr_2"));
+               startActivity(intent);
+            }
+           else {
+               Toast.makeText(SetTime.this,"Set Date and Time",Toast.LENGTH_LONG).show();
+           }
+        });
 
        continue_btn.setOnClickListener(e ->
         {
@@ -74,8 +97,19 @@ public class SetTime extends AppCompatActivity {
                 nav_txt.setText("Pickup Time");
                 back_btn.setTransitionName("setDate");
             }
+            else if(!currTime.getText().toString().isEmpty()){
+                intent.putExtra("date",currDate.getText().toString());
+                intent.putExtra("time", currTime.getText().toString());
+                intent.putExtra("vehicle",getIntent().getExtras().getInt("vehicle"));
+                intent.putExtra("price",getIntent().getExtras().getString("price"));
+                intent.putExtra("pk_addr_1", getIntent().getExtras().getString("pk_addr_1"));
+                intent.putExtra("pk_addr_2", getIntent().getExtras().getString("pk_addr_2"));
+                intent.putExtra("dl_addr_1", getIntent().getExtras().getString("dl_addr_1"));
+                intent.putExtra("dl_addr_2", getIntent().getExtras().getString("dl_addr_2"));
+                startActivity(intent);
+            }
             else{
-                startActivity(new Intent(SetTime.this, Item_Details.class));
+                Toast.makeText(SetTime.this,"Set Date and Time",Toast.LENGTH_LONG).show();
             }
         });
 
@@ -86,6 +120,14 @@ public class SetTime extends AppCompatActivity {
                nav_txt.setText("Pickup Date");
                continue_btn.setText("Set Time");
                back_btn.setTransitionName("goBack");
+           }
+           else {
+               Intent vehicleIntent = new Intent(SetTime.this,Vehicle.class);
+               vehicleIntent.putExtra("pk_addr_1", getIntent().getExtras().getString("pk_addr_1"));
+               vehicleIntent.putExtra("pk_addr_2", getIntent().getExtras().getString("pk_addr_2"));
+               vehicleIntent.putExtra("dl_addr_1", getIntent().getExtras().getString("dl_addr_1"));
+               vehicleIntent.putExtra("dl_addr_2", getIntent().getExtras().getString("dl_addr_2"));
+               startActivity(vehicleIntent);
            }
        });
 
