@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lugg_blue_dark"
+    tools:context=".PaymentCard">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/lugg_blue_light"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="20dp"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/back_arrow"
+            app:tint="@color/lugg_yellow"
+            android:id="@+id/item_details_back_arrow"
+            />
+
+        <TextView
+
+            android:id="@+id/login_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/item_details_back_arrow"
+            app:layout_constraintEnd_toStartOf="@id/item_details_next"
+            app:layout_constraintBottom_toBottomOf="@id/item_details_back_arrow"
+            app:layout_constraintTop_toTopOf="@id/item_details_back_arrow"
+            android:text="Add a Card"
+            android:textSize="20dp"
+            android:textColor="@color/lugg_white"
+            android:paddingHorizontal="20dp"
+            />
+
+        <TextView
+            android:transitionName="next"
+            android:id="@+id/item_details_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/item_details_back_arrow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/item_details_back_arrow"
+            android:text="Save"
+            android:textColor="@color/lugg_yellow" />
+
+        <!--        add progress roller-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/text_bg"
+        android:orientation="vertical"
+        android:layout_margin="20dp" >
+
+        <EditText
+
+            android:id="@+id/card_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/login_text"
+            android:background="@drawable/text_bottom_border"
+            android:layout_margin="15dp"
+            android:paddingVertical="10dp"
+            android:inputType="text"
+            android:hint="Name"
+            android:textSize="14dp"
+            android:textColorHint="@color/lugg_white_dark"
+            />
+        <LinearLayout
+            android:weightSum="100"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="10dp"
+            >
+            <EditText
+
+                android:id="@+id/card_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/text_bottom_border"
+                android:layout_marginVertical="15dp"
+                android:layout_marginHorizontal="5dp"
+                android:paddingVertical="10dp"
+                android:inputType="number"
+                android:hint="Card Number"
+                android:textSize="14dp"
+                android:textColorHint="@color/lugg_white_dark"
+                android:layout_weight="70"
+                />
+            <EditText
+
+                android:id="@+id/card_exp_month"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/text_bottom_border"
+                android:layout_marginVertical="15dp"
+                android:layout_marginHorizontal="5dp"
+                android:paddingVertical="10dp"
+                android:inputType="number"
+                android:hint="MM"
+                android:textSize="14dp"
+                android:textColorHint="@color/lugg_white_dark"
+                android:layout_weight="10"
+                />
+            <EditText
+
+                android:id="@+id/card_exp_year"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/text_bottom_border"
+                android:layout_marginVertical="15dp"
+                android:layout_marginHorizontal="5dp"
+                android:paddingVertical="10dp"
+                android:inputType="number"
+                android:hint="YY"
+                android:textSize="14dp"
+                android:textColorHint="@color/lugg_white_dark"
+                android:layout_weight="10"
+                />
+            <EditText
+
+                android:id="@+id/card_exp_cvc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/login_text"
+                android:background="@drawable/text_bottom_border"
+                android:layout_marginVertical="15dp"
+                android:layout_marginHorizontal="5dp"
+                android:paddingVertical="10dp"
+                android:inputType="number"
+                android:hint="CVC"
+                android:textSize="14dp"
+                android:textColorHint="@color/lugg_white_dark"
+                android:layout_weight="10"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:weightSum="100"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="10dp"
+            >
+            <EditText
+
+                android:id="@+id/card_zip"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/login_text"
+                android:background="@drawable/text_bottom_border"
+                android:layout_marginVertical="15dp"
+                android:layout_marginHorizontal="5dp"
+                android:paddingVertical="10dp"
+                android:inputType="text"
+                android:hint="ZIP"
+                android:textSize="14dp"
+                android:textColorHint="@color/lugg_white_dark"
+                android:layout_weight="40"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <android.widget.Button
+        android:id="@+id/intro_get_started"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/btn_bg"
+        android:backgroundTint="@color/lugg_yellow"
+        android:paddingVertical="20dp"
+        android:text="Add Card"
+        android:textAllCaps="false"
+        android:textColor="@color/lugg_blue_dark"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,14 +20,11 @@ public class Location extends AppCompatActivity {
     TextView dl_addr_2 ;
     ConstraintLayout pk_addr_box;
     ConstraintLayout dl_addr_box;
-    ImageView pk_icon;
-    ImageView dl_icon;
-    Button set_loc;
-
     @Nullable String pickup_addr;
     @Nullable String delivery_addr;
-    @Nullable String [] pk_Arr;
     @Nullable String [] dl_Arr;
+
+    TextView next_btn;
 
     Intent intent;
 
@@ -55,32 +52,25 @@ public class Location extends AppCompatActivity {
         dl_addr_2 = findViewById(R.id.delivery_addr_2);
         pk_addr_box = findViewById(R.id.pickup_addr_container);
         dl_addr_box = findViewById(R.id.delivery_addr_container);
-        pk_icon = findViewById(R.id.pickup_addr_icon);
-        dl_icon = findViewById(R.id.delivery_addr_icon);
-        set_loc = findViewById(R.id.set_location);
-
+        next_btn = findViewById(R.id.location_next);
 
 
         if(changeType.equals("delivery")) {
             dl_Arr = delivery_addr.split(",");
-            dl_addr_box.setLayoutParams(unset_loc_view);
             pk_addr_1.setText(pk_Arr[0]);
             pk_addr_2.setText(pk_Arr[1]+ pk_Arr[2]);
-            pk_addr_box.setLayoutParams(set_loc_view);
             dl_addr_1.setText(dl_Arr[0]);
             dl_addr_2.setText(dl_Arr[1] + dl_Arr[2]);
-            set_loc.setTransitionName("continue");
+            next_btn.setVisibility(View.VISIBLE);
         }
         else {
             pk_addr_1.setText(pk_Arr[0]);
             pk_addr_2.setText(pk_Arr[1]+ pk_Arr[2]);
             if(delivery_addr != null && !delivery_addr.isEmpty()){
                 dl_Arr = delivery_addr.split(",");
-                pk_addr_box.setLayoutParams(unset_loc_view);
-                dl_addr_box.setLayoutParams(set_loc_view);
                 dl_addr_1.setText(dl_Arr[0]);
                 dl_addr_2.setText(dl_Arr[1] + dl_Arr[2]);
-                set_loc.setTransitionName("continue");
+                next_btn.setVisibility(View.VISIBLE);
             }
 
 
@@ -88,54 +78,22 @@ public class Location extends AppCompatActivity {
         }
 
         pk_addr_box.setOnClickListener(e -> {
-            if(pk_addr_box.getTransitionName().equals("disabled") && delivery_addr != null && !delivery_addr.isEmpty()) {
-
-                pk_addr_box.setLayoutParams(unset_loc_view);
-                dl_addr_box.setLayoutParams(set_loc_view);
-                dl_addr_box.setTransitionName("disabled");
-                pk_addr_box.setTransitionName("enabled");
-            }
-            else {
                 if(delivery_addr != null && !delivery_addr.isEmpty()){
                     intent.putExtra("delivery", delivery_addr);
                 }
                 intent.putExtra("change","pickup");
                 startActivity(intent);
-            }
         });
 
         dl_addr_box.setOnClickListener(e -> {
-            if(dl_addr_box.getTransitionName().equals("disabled") && delivery_addr != null && !delivery_addr.isEmpty()) {
-
-                dl_addr_box.setLayoutParams(unset_loc_view);
-                pk_addr_box.setLayoutParams(set_loc_view);
-                pk_addr_box.setTransitionName("disabled");
-                dl_addr_box.setTransitionName("enabled");
-            }
-            else {
                 intent.putExtra("pickup", pickup_addr);
                 intent.putExtra("change","delivery");
                 startActivity(intent);
-            }
         });
 
 
-        set_loc.setOnClickListener( e -> {
-            if(set_loc.getTransitionName().equals("pickup")) {
-                pk_addr_box.setLayoutParams(set_loc_view);
-                dl_addr_box.setLayoutParams(unset_loc_view);
-                set_loc.setText("Enter Destination");
-                set_loc.setTransitionName("delivery");
-            }
-            else if (set_loc.getTransitionName().equals("delivery")){
-                intent.putExtra("change","delivery");
-                intent.putExtra("pickup", pickup_addr);
-                startActivity(intent);
-            }
-            else {
-                startActivity(new Intent(Location.this, Introduction.class));
-            }
-
-        });
+        next_btn.setOnClickListener( e -> {
+              startActivity(new Intent(Location.this, Vehicle.class));
+       });
     }
 }

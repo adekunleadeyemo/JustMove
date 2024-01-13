@@ -6,143 +6,209 @@
     android:layout_height="match_parent"
     tools:context=".Location">
 
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/set_location"
-        android:orientation="vertical"
-        android:weightSum="100"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="20dp"
+        android:id="@+id/location_login_nav"
+        android:background="@color/lugg_blue_dark"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/back_arrow"
+            app:tint="@color/lugg_yellow"
+            android:id="@+id/user_login_back_arrow"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/user_login_back_arrow"
+            app:layout_constraintEnd_toStartOf="@id/location_next"
+            app:layout_constraintBottom_toBottomOf="@id/user_login_back_arrow"
+            app:layout_constraintTop_toTopOf="@id/user_login_back_arrow"
+            android:text="Select Location"
+            android:textSize="20dp"
+            android:textColor="@color/lugg_white"
+            android:paddingHorizontal="20dp"
+            />
+
+        <TextView
+            android:id="@+id/location_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/user_login_back_arrow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/user_login_back_arrow"
+            android:text="Next"
+            android:textColor="@color/lugg_yellow" />
+
+        <!--        add progress roller-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        app:layout_constraintTop_toBottomOf="@id/location_login_nav"
+        android:background="#F3E6F3"
+        android:paddingVertical="20dp"
         >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:transitionName="disabled"
             android:id="@+id/pickup_addr_container"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="90dp"
+            android:layout_marginHorizontal="20dp"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/delivery_addr_container"
-            android:paddingVertical="10dp"
-            android:background="@color/lugg_blue_light"
-            android:layout_weight="100"
+            android:paddingVertical="5dp"
             >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/pickup_text"
+                app:layout_constraintBottom_toTopOf="@id/pickup_addr_icon"
+                app:layout_constraintStart_toEndOf="@id/pickup_addr_icon"
+                android:textSize="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/lugg_blue_dark"
+                android:text="Pickup"
+                />
             <ImageView
                 android:id="@+id/pickup_addr_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="@id/pickup_addr"
+                app:layout_constraintBottom_toBottomOf="@id/pickup_addr"
                 app:layout_constraintStart_toStartOf="parent"
-                app:tint="@color/white"
-                android:src="@drawable/face_book_icon" />
+                app:tint="@color/lugg_blue_dark"
+                android:src="@drawable/up_arr" />
             <LinearLayout
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginStart="40dp"
+                android:paddingHorizontal="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:background="@drawable/btn_bg"
+                android:backgroundTint="@color/lugg_white"
+                android:id="@+id/pickup_addr"
+                >
                 <TextView
                     android:id="@+id/pickup_addr_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Address Line 1"
-                    android:textSize="24dp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/lugg_blue_dark"
+                    android:text="Enter pickup"
+                    android:textSize="18dp"
+
                     />
                 <TextView
                     android:id="@+id/pickup_addr_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Address Line 2"
-                    android:textSize="15dp"
-                    android:textColor="@color/white"
+                    android:text=""
+                    android:textColor="@color/lugg_blue_dark"
+                    android:textSize="14dp"
                     />
 
             </LinearLayout>
-
-            <ImageView
-                android:id="@+id/set_pickup_addr"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:tint="@color/white"
-                android:layout_gravity="center"
-                android:src="@drawable/arrow_fwd" />
         </androidx.constraintlayout.widget.ConstraintLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:transitionName="disabled"
             android:id="@+id/delivery_addr_container"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@id/set_location"
-            android:paddingVertical="10dp"
-            android:background="@color/lugg_blue_light"
-            android:layout_weight="0"
+            android:layout_height="90dp"
+            android:layout_marginHorizontal="20dp"
+            app:layout_constraintTop_toBottomOf="@id/pickup_addr_container"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:paddingVertical="5dp"
             >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/delivery_text"
+                app:layout_constraintBottom_toTopOf="@id/delivery_addr_icon"
+                app:layout_constraintStart_toEndOf="@id/delivery_addr_icon"
+                android:textSize="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/lugg_blue_dark"
+                android:text="Destination"
+                />
             <ImageView
                 android:id="@+id/delivery_addr_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="@id/delivery_addr"
+                app:layout_constraintBottom_toBottomOf="@id/delivery_addr"
                 app:layout_constraintStart_toStartOf="parent"
-                app:tint="@color/white"
-                android:src="@drawable/face_book_icon" />
+                app:tint="@color/lugg_blue_dark"
+                android:textColor="@color/lugg_blue_dark"
+                android:src="@drawable/down_arr" />
             <LinearLayout
-                app:layout_constraintTop_toTopOf="parent"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginStart="40dp"
+                android:paddingHorizontal="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:background="@drawable/btn_bg"
+                android:backgroundTint="@color/lugg_white"
+                android:id="@+id/delivery_addr"
+                >
                 <TextView
                     android:id="@+id/delivery_addr_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Enter Destination"
-                    android:textSize="24dp"
-                    android:textColor="@color/white"
+                    android:text="Enter destination"
+                    android:textSize="18dp"
+                    android:textColor="@color/lugg_blue_dark"
+
                     />
                 <TextView
                     android:id="@+id/delivery_addr_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textSize="15dp"
-                    android:textColor="@color/white"
+                    android:textSize="14dp"
+                    android:textColor="@color/lugg_blue_dark"
                     />
 
             </LinearLayout>
-
-            <ImageView
-                android:id="@+id/set_delivery_addr"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:tint="@color/white"
-                android:layout_gravity="center"
-                android:src="@drawable/arrow_fwd" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <android.widget.Button
-        android:transitionName="pickup"
-        android:id="@+id/set_location"
+        android:id="@+id/intro_get_started"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:paddingVertical="20dp"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/btn_bg"
-        android:textSize="30dp"
+        android:backgroundTint="@color/lugg_yellow"
+        android:paddingVertical="20dp"
         android:text="Continue"
         android:textAllCaps="false"
         android:textColor="@color/lugg_blue_dark"
-        />
+        android:textSize="20dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="20dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
