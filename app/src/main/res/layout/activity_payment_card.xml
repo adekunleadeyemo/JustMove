@@ -10,7 +10,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/lugg_blue_light"
         app:layout_constraintTop_toTopOf="parent"
         android:padding="20dp"
         >
@@ -22,7 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:src="@drawable/back_arrow"
             app:tint="@color/lugg_yellow"
-            android:id="@+id/item_details_back_arrow"
+            android:id="@+id/payment_card_back"
             />
 
         <TextView
@@ -30,10 +29,10 @@
             android:id="@+id/login_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/item_details_back_arrow"
-            app:layout_constraintEnd_toStartOf="@id/item_details_next"
-            app:layout_constraintBottom_toBottomOf="@id/item_details_back_arrow"
-            app:layout_constraintTop_toTopOf="@id/item_details_back_arrow"
+            app:layout_constraintStart_toEndOf="@id/payment_card_back"
+            app:layout_constraintEnd_toStartOf="@id/payment_card_save"
+            app:layout_constraintBottom_toBottomOf="@id/payment_card_back"
+            app:layout_constraintTop_toTopOf="@id/payment_card_back"
             android:text="Add a Card"
             android:textSize="20dp"
             android:textColor="@color/lugg_white"
@@ -42,12 +41,12 @@
 
         <TextView
             android:transitionName="next"
-            android:id="@+id/item_details_next"
+            android:id="@+id/payment_card_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/item_details_back_arrow"
+            app:layout_constraintTop_toTopOf="@id/payment_card_back"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/item_details_back_arrow"
+            app:layout_constraintBottom_toBottomOf="@id/payment_card_back"
             android:text="Save"
             android:textColor="@color/lugg_yellow" />
 
@@ -73,6 +72,7 @@
             android:layout_margin="15dp"
             android:paddingVertical="10dp"
             android:inputType="text"
+            android:textColor="@color/lugg_white_dark"
             android:hint="Name"
             android:textSize="14dp"
             android:textColorHint="@color/lugg_white_dark"
@@ -93,9 +93,12 @@
                 android:layout_marginVertical="15dp"
                 android:layout_marginHorizontal="5dp"
                 android:paddingVertical="10dp"
-                android:inputType="number"
+                android:inputType="text"
                 android:hint="Card Number"
                 android:textSize="14dp"
+                android:textColor="@color/lugg_white_dark"
+                android:letterSpacing="1"
+                android:autoSizeMaxTextSize="80dp"
                 android:textColorHint="@color/lugg_white_dark"
                 android:layout_weight="70"
                 />
@@ -111,6 +114,7 @@
                 android:inputType="number"
                 android:hint="MM"
                 android:textSize="14dp"
+                android:textColor="@color/lugg_white_dark"
                 android:textColorHint="@color/lugg_white_dark"
                 android:layout_weight="10"
                 />
@@ -128,6 +132,7 @@
                 android:textSize="14dp"
                 android:textColorHint="@color/lugg_white_dark"
                 android:layout_weight="10"
+                android:textColor="@color/lugg_white_dark"
                 />
             <EditText
 
@@ -144,6 +149,7 @@
                 android:textSize="14dp"
                 android:textColorHint="@color/lugg_white_dark"
                 android:layout_weight="10"
+                android:textColor="@color/lugg_white_dark"
                 />
         </LinearLayout>
         <LinearLayout
@@ -167,13 +173,14 @@
                 android:hint="ZIP"
                 android:textSize="14dp"
                 android:textColorHint="@color/lugg_white_dark"
-                android:layout_weight="40"
+                android:layout_weight="30"
+                android:textColor="@color/lugg_white_dark"
                 />
         </LinearLayout>
     </LinearLayout>
 
     <android.widget.Button
-        android:id="@+id/intro_get_started"
+        android:id="@+id/payment_card_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"

@@ -28,13 +28,12 @@ public class Confirmation extends AppCompatActivity {
     TextView dl_addr_1;
     TextView dl_addr_2;
 
-    List<String> cards;
+    TextView confirm_next;
+    TextView paymentCard;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmation);
-
-        cards = new ArrayList<>();
 
 
         goToPayments = findViewById(R.id.go_to_payments);
@@ -49,6 +48,13 @@ public class Confirmation extends AppCompatActivity {
         next_btn = findViewById(R.id.confirm_nav_next);
         continue_btn = findViewById(R.id.confirm_continue);
         back_btn = findViewById(R.id.confirm_back_arrow);
+        paymentCard = findViewById(R.id.payment_card);
+        confirm_next = findViewById(R.id.confirm_nav_next);
+
+
+        if(getIntent().getExtras() != null && getIntent().getExtras().getString("selectedCard") != null && !getIntent().getExtras().getString("selectedCard").isEmpty()){
+                paymentCard.setText(getIntent().getExtras().getString("selectedCard"));
+        }
 
         vehicle_img.setImageResource(getIntent().getExtras().getInt("vehicle"));
         confirm_price.setText(getIntent().getExtras().getString("price"));
@@ -61,13 +67,17 @@ public class Confirmation extends AppCompatActivity {
         dl_addr_2.setText(getIntent().getExtras().getString("dl_addr_2"));
 
         goToPayments.setOnClickListener(e -> {
-            Intent paymentCardIntent = new Intent(Confirmation.this, Item_Details.class);
+            Intent paymentCardIntent = new Intent(Confirmation.this, Payment.class);
             paymentCardIntent.putExtra("vehicle",getIntent().getExtras().getInt("vehicle"));
             paymentCardIntent.putExtra("price",getIntent().getExtras().getString("price"));
+            paymentCardIntent.putExtra("date",getIntent().getExtras().getString("date"));
+            paymentCardIntent.putExtra("time",getIntent().getExtras().getString("time"));
             paymentCardIntent.putExtra("pk_addr_1", getIntent().getExtras().getString("pk_addr_1"));
             paymentCardIntent.putExtra("pk_addr_2", getIntent().getExtras().getString("pk_addr_2"));
             paymentCardIntent.putExtra("dl_addr_1", getIntent().getExtras().getString("dl_addr_1"));
             paymentCardIntent.putExtra("dl_addr_2", getIntent().getExtras().getString("dl_addr_2"));
+            paymentCardIntent.putExtra("selectedCard", getIntent().getExtras().getString("selectedCard"));
+            paymentCardIntent.putStringArrayListExtra("cards", getIntent().getExtras().getStringArrayList("cards"));
             startActivity(paymentCardIntent);
         });
         
@@ -75,11 +85,48 @@ public class Confirmation extends AppCompatActivity {
             Intent itemDetailsIntent = new Intent(Confirmation.this, Item_Details.class);
             itemDetailsIntent.putExtra("vehicle",getIntent().getExtras().getInt("vehicle"));
             itemDetailsIntent.putExtra("price",getIntent().getExtras().getString("price"));
+            itemDetailsIntent.putExtra("date",getIntent().getExtras().getString("date"));
+            itemDetailsIntent.putExtra("time",getIntent().getExtras().getString("time"));
             itemDetailsIntent.putExtra("pk_addr_1", getIntent().getExtras().getString("pk_addr_1"));
             itemDetailsIntent.putExtra("pk_addr_2", getIntent().getExtras().getString("pk_addr_2"));
             itemDetailsIntent.putExtra("dl_addr_1", getIntent().getExtras().getString("dl_addr_1"));
             itemDetailsIntent.putExtra("dl_addr_2", getIntent().getExtras().getString("dl_addr_2"));
             startActivity(itemDetailsIntent);
+        });
+
+        continue_btn.setOnClickListener(e -> {
+            if(getIntent().getExtras().getString("selectedCard") !=null && !getIntent().getExtras().getString("selectedCard").isEmpty()){
+                Intent completedIntent = new Intent(Confirmation.this, Completed.class);
+                completedIntent.putExtra("vehicle",getIntent().getExtras().getInt("vehicle"));
+                completedIntent.putExtra("price",getIntent().getExtras().getString("price"));
+                completedIntent.putExtra("date",getIntent().getExtras().getString("date"));
+                completedIntent.putExtra("time",getIntent().getExtras().getString("time"));
+                completedIntent.putExtra("pk_addr_1", getIntent().getExtras().getString("pk_addr_1"));
+                completedIntent.putExtra("pk_addr_2", getIntent().getExtras().getString("pk_addr_2"));
+                completedIntent.putExtra("dl_addr_1", getIntent().getExtras().getString("dl_addr_1"));
+                completedIntent.putExtra("dl_addr_2", getIntent().getExtras().getString("dl_addr_2"));
+                completedIntent.putExtra("selectedCard", getIntent().getExtras().getString("selectedCard"));
+                completedIntent.putStringArrayListExtra("cards", getIntent().getExtras().getStringArrayList("cards"));
+                startActivity(completedIntent);
+            }
+
+        });
+
+        confirm_next.setOnClickListener(e -> {
+            if(getIntent().getExtras().getString("selectedCard") !=null && !getIntent().getExtras().getString("selectedCard").isEmpty()){
+                Intent completedIntent = new Intent(Confirmation.this, Completed.class);
+                completedIntent.putExtra("vehicle",getIntent().getExtras().getInt("vehicle"));
+                completedIntent.putExtra("price",getIntent().getExtras().getString("price"));
+                completedIntent.putExtra("date",getIntent().getExtras().getString("date"));
+                completedIntent.putExtra("time",getIntent().getExtras().getString("time"));
+                completedIntent.putExtra("pk_addr_1", getIntent().getExtras().getString("pk_addr_1"));
+                completedIntent.putExtra("pk_addr_2", getIntent().getExtras().getString("pk_addr_2"));
+                completedIntent.putExtra("dl_addr_1", getIntent().getExtras().getString("dl_addr_1"));
+                completedIntent.putExtra("dl_addr_2", getIntent().getExtras().getString("dl_addr_2"));
+                completedIntent.putExtra("selectedCard", getIntent().getExtras().getString("selectedCard"));
+                completedIntent.putStringArrayListExtra("cards", getIntent().getExtras().getStringArrayList("cards"));
+                startActivity(completedIntent);
+            }
         });
     }
 }

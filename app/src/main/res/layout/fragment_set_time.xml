@@ -18,7 +18,7 @@
         android:textAlignment="center"
         android:text="Select Pickup Time"
         android:layout_marginVertical="10dp"
-        android:textColor="@color/lugg_blue_dark"/>
+        android:textColor="@color/lugg_white_dark"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:transitionName="disabled"

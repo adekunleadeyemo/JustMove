@@ -90,7 +90,7 @@ public class SetTime extends AppCompatActivity {
 
        continue_btn.setOnClickListener(e ->
         {
-            if(continue_btn.getTransitionName().equals("setTime")){
+            if(continue_btn.getTransitionName().equals("setTime") && !currDate.getText().toString().equals(getIntent().getExtras().getString("price"))){
                 replaceFragment(new SetTimeFragment(findViewById(R.id.curr_time),findViewById(R.id.time_txt), findViewById(R.id.pickup_txt)), R.id.date_fragment);
                 continue_btn.setTransitionName("continue");
                 continue_btn.setText("Continue");

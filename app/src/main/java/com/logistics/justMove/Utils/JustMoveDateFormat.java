@@ -46,22 +46,21 @@ public class JustMoveDateFormat {
         days.add(new JustMoveTime("Today",todayValue,todayBackground));
         days.add(new JustMoveTime("Tomorrow",tomorrowValue,tomorrowBackground));
         weekDay = weekDay+1;
-
         for(int i=0; i<30; i++){
-
-              monthDayRes = this.GetMonthDay(currDay,currMonth);
-             currMonth = monthDayRes.get(0);
-             currDay = monthDayRes.get(1);
+            monthDayRes = this.GetMonthDay(currDay,currMonth);
+            currMonth = monthDayRes.get(0);
+            currDay = monthDayRes.get(1);
             weekDay = weekDay+1;
             if(weekDay > 7){
-                weekDay = 1;
+                weekDay = weekDay - 7;
             }
+
             String textDay = this.GetWeekDayInText(weekDay);
             String textMonth = this.GetMonthInText(currMonth);
             String label = textDay +", "+ textMonth+ " " +currDay;
             String value = currMonth + "/"+currDay;
             int background = R.color.lugg_white_dark;
-             days.add(new JustMoveTime(label,value,background));
+            days.add(new JustMoveTime(label,value,background));
         }
 
         return  days;

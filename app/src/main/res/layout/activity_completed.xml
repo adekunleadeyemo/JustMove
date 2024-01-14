@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lugg_blue_dark"
+    tools:context=".Completed">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="20dp"
+        android:id="@+id/complete_time_nav"
+        >
+
+        <TextView
+            android:id="@+id/confirm_nav_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="Completed"
+            android:textSize="20dp"
+            android:textColor="@color/lugg_white"
+            android:paddingHorizontal="20dp"
+            />
+
+        <!--        add progress roller-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        app:layout_constraintBottom_toTopOf="@id/complete_time"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/thank_you"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="24dp"
+        android:text="Your Mover has been scheduled!"
+        android:layout_marginBottom="5dp"
+        android:textColor="#F3E6F3"/>
+
+<!--    <TextView-->
+<!--        app:layout_constraintTop_toBottomOf="@id/thank_you"-->
+<!--        android:id="@+id/booked"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textSize="18dp"-->
+<!--        android:text="Your Order has been scheduled!"-->
+<!--        android:layout_marginBottom="5dp"-->
+<!--        android:textColor="#F3E6F3"/>-->
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/confirm_pickup_addr_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:paddingStart="10dp"
+        app:layout_constraintTop_toBottomOf="@id/complete_vehicle_img"
+        android:layout_marginTop="30dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pickup_text"
+            app:layout_constraintBottom_toTopOf="@id/confirm_pickup_addr"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="18dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginHorizontal="10dp"
+            android:textColor="@color/lugg_white_dark"
+            android:text="Pickup Location"
+            />
+        <ImageView
+            android:id="@+id/confirm_pickup_addr_icon"
+            android:layout_width="30dp"
+            android:layout_height="27dp"
+            app:layout_constraintTop_toTopOf="@id/pickup_text"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="2dp"
+            app:layout_constraintStart_toEndOf="@id/pickup_text"
+            android:tint="@color/lugg_white_dark"
+            android:src="@drawable/loction_confirmation_icon"
+            app:flow_wrapMode="none"
+            />
+
+        <LinearLayout
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@id/pickup_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:id="@+id/confirm_pickup_addr"
+            >
+            <TextView
+                android:id="@+id/complete_pickup_addr_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/lugg_white_dark"
+                android:text="700 W Compton blvd"
+                android:textSize="24dp"
+
+                />
+            <TextView
+                android:id="@+id/complete_pickup_addr_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address line 2"
+                android:textColor="@color/lugg_white_dark"
+                android:textSize="18dp"
+                />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/complete_vehicle_img"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        app:layout_constraintTop_toTopOf="@id/complete_time_nav"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/large_vehicle" />
+    <TextView
+        app:layout_constraintBottom_toTopOf="@id/complete_date"
+        android:id="@+id/complete_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="18dp"
+        android:text="Your vehicle will arrive"
+        android:layout_marginBottom="5dp"
+        android:textColor="#F3E6F3"/>
+    <TextView
+        app:layout_constraintBottom_toTopOf="@id/complete_time"
+        android:id="@+id/complete_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:text="Tuesday, Jan 3"
+        android:layout_marginBottom="5dp"
+        android:textColor="#F3E6F3"/>
+    <TextView
+        app:layout_constraintBottom_toTopOf="@id/complete_vehicle_img"
+        android:id="@+id/complete_time"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:text="between 5pm - 6pm"
+        android:layout_marginBottom="20dp"
+        android:textColor="#F3E6F3"/>
+
+
+    <android.widget.Button
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/complete_continue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/btn_bg"
+        android:backgroundTint="@color/lugg_yellow"
+        android:paddingVertical="20dp"
+        android:text="Schedule a Mover"
+        android:textAllCaps="false"
+        android:textColor="@color/lugg_blue_dark"
+        android:textSize="20dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

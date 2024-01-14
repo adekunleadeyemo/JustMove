@@ -41,6 +41,8 @@ public class Item_Details extends AppCompatActivity {
             Intent timeIntent = new Intent(Item_Details.this, SetTime.class);
             timeIntent.putExtra("vehicle",getIntent().getExtras().getInt("vehicle"));
             timeIntent.putExtra("price",getIntent().getExtras().getString("price"));
+            timeIntent.putExtra("date",getIntent().getExtras().getString("date"));
+            timeIntent.putExtra("time",getIntent().getExtras().getString("time"));
             timeIntent.putExtra("pk_addr_1", getIntent().getExtras().getString("pk_addr_1"));
             timeIntent.putExtra("pk_addr_2", getIntent().getExtras().getString("pk_addr_2"));
             timeIntent.putExtra("dl_addr_1", getIntent().getExtras().getString("dl_addr_1"));
