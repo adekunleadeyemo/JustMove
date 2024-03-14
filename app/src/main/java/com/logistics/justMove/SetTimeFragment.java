@@ -129,9 +129,11 @@ public class SetTimeFragment extends Fragment implements RecyclerViewInterface {
 
         if(prevPos != position && event.equals("click")){
             currTime.setText(daytimes.get(position).getLabel());
-            daytimes.get(position).setBackground(R.color.white);
+            daytimes.get(position).setBackground(R.color.lugg_button);
+            daytimes.get(position).setTextColor("#F3E6F3");
             if(prevPos != -1) {
                 daytimes.get(prevPos).setBackground(R.color.lugg_white_dark);
+                daytimes.get(prevPos).setTextColor("#274378");
             }
             prevPos = position;
             myAdapter2.notifyDataSetChanged();

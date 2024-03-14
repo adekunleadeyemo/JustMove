@@ -122,8 +122,8 @@ or move into your new place when it works best for you"
         android:textSize="20dp"
         android:text="Schedule a Mover"
         android:textAllCaps="false"
-        android:textColor="@color/lugg_blue_dark"
-        android:backgroundTint="@color/lugg_yellow"
+        android:textColor="@color/lugg_btn_txt_color"
+        android:backgroundTint="@color/lugg_button"
 
         />
 

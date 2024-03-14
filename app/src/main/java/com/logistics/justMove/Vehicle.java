@@ -132,8 +132,10 @@ public class Vehicle extends AppCompatActivity {
         next_btn.setOnClickListener( e -> proceedToNextActivity());
         vehicleContinue.setOnClickListener(e -> proceedToNextActivity());
         vehicle_back.setOnClickListener(e -> {
-            Intent itn2 = new Intent(Vehicle.this, Location.class);
-            itn2.putExtra("change","pickup");
+            Intent itn2 = new Intent(Vehicle.this, Location_Select.class);
+            if(getIntent().getExtras() != null){
+                itn2.putExtras(getIntent().getExtras());
+            }
             startActivity(itn2);
         });
 
@@ -142,10 +144,10 @@ public class Vehicle extends AppCompatActivity {
 
     private  void proceedToNextActivity(){
         if(intent.getExtras().getInt("vehicle") != -1){
-            intent.putExtra("pk_addr_1", getIntent().getExtras().getString("pk_addr_1"));
-            intent.putExtra("pk_addr_2", getIntent().getExtras().getString("pk_addr_2"));
-            intent.putExtra("dl_addr_1", getIntent().getExtras().getString("dl_addr_1"));
-            intent.putExtra("dl_addr_2", getIntent().getExtras().getString("dl_addr_2"));
+            if(getIntent().getExtras() != null){
+                intent.putExtras(getIntent().getExtras());
+            }
+
             startActivity(intent);
         }
         else{

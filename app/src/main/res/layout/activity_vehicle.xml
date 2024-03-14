@@ -261,11 +261,11 @@
         android:layout_margin="20dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/btn_bg"
-        android:backgroundTint="@color/lugg_yellow"
+        android:backgroundTint="@color/lugg_button"
         android:paddingVertical="20dp"
         android:text="Continue"
         android:textAllCaps="false"
-        android:textColor="@color/lugg_blue_dark"
+        android:textColor="@color/lugg_btn_txt_color"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="20dp" />

@@ -120,9 +120,11 @@ public class SetDateFragment extends Fragment implements RecyclerViewInterface {
         if(prevPos != position && event.equals("click")){
             currDate.setText(dayDates.get(position).getLabel());
             currDate.setTextSize(30);
-            dayDates.get(position).setBackground(R.color.white);
+            dayDates.get(position).setBackground(R.color.lugg_button);
+            dayDates.get(position).setTextColor("#F3E6F3");
             if(prevPos != -1) {
                 dayDates.get(prevPos).setBackground(R.color.lugg_white_dark);
+                dayDates.get(prevPos).setTextColor("#274378");
             }
             prevPos = position;
             myAdapter.notifyDataSetChanged();

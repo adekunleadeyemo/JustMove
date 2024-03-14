@@ -93,14 +93,14 @@
                 android:layout_marginVertical="15dp"
                 android:layout_marginHorizontal="5dp"
                 android:paddingVertical="10dp"
-                android:inputType="text"
+                android:inputType="number"
                 android:hint="Card Number"
                 android:textSize="14dp"
                 android:textColor="@color/lugg_white_dark"
-                android:letterSpacing="1"
                 android:autoSizeMaxTextSize="80dp"
+                android:maxLength="16"
                 android:textColorHint="@color/lugg_white_dark"
-                android:layout_weight="70"
+                android:layout_weight="65"
                 />
             <EditText
 
@@ -112,6 +112,7 @@
                 android:layout_marginHorizontal="5dp"
                 android:paddingVertical="10dp"
                 android:inputType="number"
+                android:maxLength="2"
                 android:hint="MM"
                 android:textSize="14dp"
                 android:textColor="@color/lugg_white_dark"
@@ -130,6 +131,7 @@
                 android:inputType="number"
                 android:hint="YY"
                 android:textSize="14dp"
+                android:maxLength="2"
                 android:textColorHint="@color/lugg_white_dark"
                 android:layout_weight="10"
                 android:textColor="@color/lugg_white_dark"
@@ -147,8 +149,9 @@
                 android:inputType="number"
                 android:hint="CVC"
                 android:textSize="14dp"
+                android:maxLength="3"
                 android:textColorHint="@color/lugg_white_dark"
-                android:layout_weight="10"
+                android:layout_weight="15"
                 android:textColor="@color/lugg_white_dark"
                 />
         </LinearLayout>
@@ -172,8 +175,9 @@
                 android:inputType="text"
                 android:hint="ZIP"
                 android:textSize="14dp"
+                android:maxLength="5"
                 android:textColorHint="@color/lugg_white_dark"
-                android:layout_weight="30"
+                android:layout_weight="19"
                 android:textColor="@color/lugg_white_dark"
                 />
         </LinearLayout>
@@ -186,11 +190,11 @@
         android:layout_margin="20dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/btn_bg"
-        android:backgroundTint="@color/lugg_yellow"
+        android:backgroundTint="@color/lugg_button"
         android:paddingVertical="20dp"
         android:text="Add Card"
         android:textAllCaps="false"
-        android:textColor="@color/lugg_blue_dark"
+        android:textColor="@color/lugg_btn_txt_color"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"/>
 

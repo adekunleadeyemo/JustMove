@@ -75,12 +75,13 @@ public class SetTime extends AppCompatActivity {
            if(continue_btn.getTransitionName().equals("continue") && !currTime.getText().toString().isEmpty()){
                intent.putExtra("date",currDate.getText().toString());
                intent.putExtra("time", currTime.getText().toString());
-               intent.putExtra("vehicle",getIntent().getExtras().getInt("vehicle"));
-               intent.putExtra("price",getIntent().getExtras().getString("price"));
-               intent.putExtra("pk_addr_1", getIntent().getExtras().getString("pk_addr_1"));
-               intent.putExtra("pk_addr_2", getIntent().getExtras().getString("pk_addr_2"));
-               intent.putExtra("dl_addr_1", getIntent().getExtras().getString("dl_addr_1"));
-               intent.putExtra("dl_addr_2", getIntent().getExtras().getString("dl_addr_2"));
+               intent.putExtras(getIntent().getExtras());
+//               intent.putExtra("vehicle",getIntent().getExtras().getInt("vehicle"));
+//               intent.putExtra("price",getIntent().getExtras().getString("price"));
+//               intent.putExtra("pk_addr_1", getIntent().getExtras().getString("pk_addr_1"));
+//               intent.putExtra("pk_addr_2", getIntent().getExtras().getString("pk_addr_2"));
+//               intent.putExtra("dl_addr_1", getIntent().getExtras().getString("dl_addr_1"));
+//               intent.putExtra("dl_addr_2", getIntent().getExtras().getString("dl_addr_2"));
                startActivity(intent);
             }
            else {
@@ -100,12 +101,13 @@ public class SetTime extends AppCompatActivity {
             else if(!currTime.getText().toString().isEmpty()){
                 intent.putExtra("date",currDate.getText().toString());
                 intent.putExtra("time", currTime.getText().toString());
-                intent.putExtra("vehicle",getIntent().getExtras().getInt("vehicle"));
-                intent.putExtra("price",getIntent().getExtras().getString("price"));
-                intent.putExtra("pk_addr_1", getIntent().getExtras().getString("pk_addr_1"));
-                intent.putExtra("pk_addr_2", getIntent().getExtras().getString("pk_addr_2"));
-                intent.putExtra("dl_addr_1", getIntent().getExtras().getString("dl_addr_1"));
-                intent.putExtra("dl_addr_2", getIntent().getExtras().getString("dl_addr_2"));
+                intent.putExtras(getIntent().getExtras());
+//                intent.putExtra("vehicle",getIntent().getExtras().getInt("vehicle"));
+//                intent.putExtra("price",getIntent().getExtras().getString("price"));
+//                intent.putExtra("pk_addr_1", getIntent().getExtras().getString("pk_addr_1"));
+//                intent.putExtra("pk_addr_2", getIntent().getExtras().getString("pk_addr_2"));
+//                intent.putExtra("dl_addr_1", getIntent().getExtras().getString("dl_addr_1"));
+//                intent.putExtra("dl_addr_2", getIntent().getExtras().getString("dl_addr_2"));
                 startActivity(intent);
             }
             else{
@@ -123,10 +125,11 @@ public class SetTime extends AppCompatActivity {
            }
            else {
                Intent vehicleIntent = new Intent(SetTime.this,Vehicle.class);
-               vehicleIntent.putExtra("pk_addr_1", getIntent().getExtras().getString("pk_addr_1"));
-               vehicleIntent.putExtra("pk_addr_2", getIntent().getExtras().getString("pk_addr_2"));
-               vehicleIntent.putExtra("dl_addr_1", getIntent().getExtras().getString("dl_addr_1"));
-               vehicleIntent.putExtra("dl_addr_2", getIntent().getExtras().getString("dl_addr_2"));
+                intent.putExtras(getIntent().getExtras());
+//               vehicleIntent.putExtra("pk_addr_1", getIntent().getExtras().getString("pk_addr_1"));
+//               vehicleIntent.putExtra("pk_addr_2", getIntent().getExtras().getString("pk_addr_2"));
+//               vehicleIntent.putExtra("dl_addr_1", getIntent().getExtras().getString("dl_addr_1"));
+//               vehicleIntent.putExtra("dl_addr_2", getIntent().getExtras().getString("dl_addr_2"));
                startActivity(vehicleIntent);
            }
        });

@@ -11,10 +11,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#F2E394</color>
-    <color name="lugg_yellow">#FFF0F5</color>
-    <color name="lugg_button">#008b00</color>
-    <color name="lugg_blue_light">#6c006c</color>
-    <color name="lugg_blue_dark">#8B008B</color>
+    <color name="lugg_yellow">#E4EAF2</color>
+    <color name="lugg_button">#f35d3c</color>
+    <color name="lugg_blue_light">#274378</color>
+    <color name="lugg_blue_dark">#315497</color>
     <color name="lugg_white">#F8F8FF</color>
     <color name="lugg_white_dark">#F3E6F3</color>
+    <color name="lugg_btn_txt_color">#F3E6F3</color>
 </resources>

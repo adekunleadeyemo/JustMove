@@ -91,7 +91,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/pickup_addr"
                 app:layout_constraintStart_toStartOf="parent"
                 app:tint="@color/lugg_blue_dark"
-                android:src="@drawable/up_arr"
+                android:src="@drawable/loction_confirmation_icon"
                 app:flow_wrapMode="none"
                 />
             <LinearLayout
@@ -160,7 +160,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:tint="@color/lugg_blue_dark"
                 android:textColor="@color/lugg_blue_dark"
-                android:src="@drawable/down_arr" />
+                android:src="@drawable/destination_confirmation_icon" />
             <LinearLayout
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -196,27 +196,33 @@
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <ImageView
-        app:layout_constraintTop_toBottomOf="@id/location_login_nav"
-        android:layout_width="wrap_content"
+<!--    <ImageView-->
+<!--        app:layout_constraintTop_toBottomOf="@id/location_login_nav"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="0dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:id="@+id/google_map"-->
+<!--        android:src="@drawable/ny_map"-->
+<!--         />-->
+<!--    <ImageView-->
+<!--        app:layout_constraintTop_toBottomOf="@id/location_selection"-->
+<!--        android:layout_marginTop="100dp"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="0dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:id="@+id/google_map2"-->
+<!--        android:src="@drawable/ny_map"-->
+<!--        android:translationZ="-10dp"-->
+
+<!--        />-->
+    <fragment
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/google_map"
-        android:src="@drawable/ny_map"
-         />
-    <ImageView
+        android:id="@+id/id_map"
         app:layout_constraintTop_toBottomOf="@id/location_selection"
-        android:layout_marginTop="100dp"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/google_map2"
-        android:src="@drawable/ny_map"
-        android:translationZ="-10dp"
-
-        />
-<!--    android:name="com.google.android.gms.maps.SupportMapFragment"-->
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+    />
 
     <android.widget.Button
         android:id="@+id/location_continue"
@@ -225,11 +231,11 @@
         android:layout_margin="20dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/btn_bg"
-        android:backgroundTint="@color/lugg_yellow"
+        android:backgroundTint="@color/lugg_button"
         android:paddingVertical="20dp"
         android:text="Continue"
         android:textAllCaps="false"
-        android:textColor="@color/lugg_blue_dark"
+        android:textColor="@color/lugg_btn_txt_color"
         android:textSize="20dp"
 
         app:layout_constraintBottom_toBottomOf="parent"

@@ -1,6 +1,8 @@
 package com.logistics.justMove;
 
+
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,6 +73,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyviewHolder> {
             default:
                 holder.dateText.setText(myDates.get(position).getLabel());
                 holder.dateText.setBackgroundResource(myDates.get(position).getBackground());
+                holder.dateText.setTextColor(Color.parseColor(myDates.get(position).getTextColor()));
                 break;
         }
 

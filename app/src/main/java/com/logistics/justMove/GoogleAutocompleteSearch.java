@@ -1,41 +1,39 @@
 package com.logistics.justMove;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.SearchView;
+import android.widget.TextView;
+import android.widget.ViewAnimator;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.Status;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.AutocompletePrediction;
 import com.google.android.libraries.places.api.model.AutocompleteSessionToken;
 import com.google.android.libraries.places.api.model.LocationBias;
-import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.api.model.PlaceTypes;
 import com.google.android.libraries.places.api.model.RectangularBounds;
 import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest;
 import com.google.android.libraries.places.api.net.PlacesClient;
-import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
-import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.logistics.justMove.Models.GeocodingResult;
@@ -44,35 +42,31 @@ import com.logistics.justMove.Utils.LatLngAdapter;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class locationSearch extends AppCompatActivity {
-
-     private static final String TAG = locationSearch.class.getSimpleName();
+public class GoogleAutocompleteSearch extends AppCompatActivity {
+    private static final String TAG = GoogleAutocompleteSearch.class.getSimpleName();
     private final Handler handler = new Handler();
     private final PlacePredictionAdapter adapter = new PlacePredictionAdapter();
-    private final Gson gson = new GsonBuilder().registerTypeAdapter(LatLng.class, new LatLngAdapter())
-            .create();
+    private final Gson gson = new GsonBuilder().registerTypeAdapter(LatLng.class, new LatLngAdapter()).create();
+
     private RequestQueue queue;
     private PlacesClient placesClient;
     private AutocompleteSessionToken sessionToken;
-    androidx.appcompat.widget.SearchView searchPlace;
 
-    private Intent intent;
+    androidx.appcompat.widget.SearchView searchPlace;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       setContentView(R.layout.activity_google_autocomplete_search);
+        setContentView(R.layout.activity_google_autocomplete_search);
 
         if (!Places.isInitialized()) {
             Places.initialize(getApplicationContext(), "AIzaSyA3h6cKqEri6qxNLO9Gc1iv8J5-JudKcLY");
         }
 
 //      Initialize members
-        intent = new Intent(locationSearch.this, Location_Select.class);
         searchPlace = findViewById(R.id.search_place);
         placesClient = Places.createClient(this);
         queue = Volley.newRequestQueue(this);
@@ -104,49 +98,13 @@ public class locationSearch extends AppCompatActivity {
     }
 
 
-
-    public void setAddress (AutocompletePrediction placePrediction) {
-
-        String location = placePrediction.getFullText(null).toString();
-        List<Address> addresses = null;
-
-        if(location != null) {
-            Geocoder geocoder = new Geocoder(locationSearch.this);
-
-            try {
-                addresses = geocoder.getFromLocationName(location, 1);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            if(addresses != null && addresses.size() > 0){
-
-                Address address = addresses.get(0);
-                @Nullable String changeType = getIntent().getExtras().getString("change");
-
-                if(changeType.equals("pickup")){
-                    @Nullable String dl_addr = getIntent().getExtras().getString("delivery");
-                    intent.putExtra("pickup",address.getAddressLine(0));
-//                            intent.putExtra("address",address);
-                    if(dl_addr != null && !dl_addr.isEmpty()){
-                        intent.putExtra("delivery",dl_addr);
-                    }
-                    intent.putExtra("change","pickup");
-                    startActivity(intent);
-                }
-                else {
-                    intent.putExtra("delivery",address.getAddressLine(0));
-                    intent.putExtra("pickup",getIntent().getExtras().getString("pickup"));
-                    intent.putExtra("change","delivery");
-                    startActivity(intent);
-                }
-
-            }
-            else {
-                Toast.makeText(locationSearch.this,"Cannot find Address",Toast.LENGTH_LONG).show();
-            }
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.search) {
+            sessionToken = AutocompleteSessionToken.newInstance();
+            return false;
         }
+        return super.onOptionsItemSelected(item);
     }
 
 
@@ -155,9 +113,8 @@ public class locationSearch extends AppCompatActivity {
         final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
-        recyclerView
-                .addItemDecoration(new DividerItemDecoration(this, layoutManager.getOrientation()));
-        adapter.setPlaceClickListener(this::setAddress);
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, layoutManager.getOrientation()));
+        adapter.setPlaceClickListener(this::geocodePlaceAndDisplay);
     }
 
     /**
@@ -191,7 +148,6 @@ public class locationSearch extends AppCompatActivity {
         placesClient.findAutocompletePredictions(newRequest).addOnSuccessListener((response) -> {
             List<AutocompletePrediction> predictions = response.getAutocompletePredictions();
             adapter.setPredictions(predictions);
-
         }).addOnFailureListener((exception) -> {
             if (exception instanceof ApiException) {
                 ApiException apiException = (ApiException) exception;
@@ -225,16 +181,20 @@ public class locationSearch extends AppCompatActivity {
                         // Use Gson to convert the response JSON object to a POJO
                         GeocodingResult result = gson.fromJson(
                                 results.getString(0), GeocodingResult.class);
-                        //use result
+                        displayDialog(placePrediction, result);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }, error -> Log.e(TAG, "Request failed"));
-
         // Add the request to the Request queue.
         queue.add(request);
-//        setAddress(placePrediction);
     }
 
-
+    private void displayDialog(AutocompletePrediction place, GeocodingResult result) {
+        new AlertDialog.Builder(this)
+                .setTitle(place.getPrimaryText(null))
+                .setMessage(place.getFullText(null))
+                .setPositiveButton(android.R.string.ok, null)
+                .show();
+    }
 }

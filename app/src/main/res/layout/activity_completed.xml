@@ -43,10 +43,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:textSize="24dp"
+        android:textSize="25dp"
         android:text="Your Mover has been scheduled!"
         android:layout_marginBottom="5dp"
-        android:textColor="#F3E6F3"/>
+        android:textColor="@color/lugg_button"/>
 
 <!--    <TextView-->
 <!--        app:layout_constraintTop_toBottomOf="@id/thank_you"-->
@@ -64,35 +64,38 @@
         android:id="@+id/confirm_pickup_addr_container"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:paddingStart="10dp"
+        android:background="@drawable/btn_bg"
+        android:layout_margin="20dp"
+        android:padding="10dp"
+        android:backgroundTint="@color/lugg_yellow"
         app:layout_constraintTop_toBottomOf="@id/complete_vehicle_img"
         android:layout_marginTop="30dp"
         >
+
         <TextView
+            android:id="@+id/pickup_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/pickup_text"
-            app:layout_constraintBottom_toTopOf="@id/confirm_pickup_addr"
-            app:layout_constraintStart_toStartOf="parent"
-            android:textSize="18dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="5dp"
             android:layout_marginHorizontal="10dp"
-            android:textColor="@color/lugg_white_dark"
+            android:layout_marginBottom="5dp"
             android:text="Pickup Location"
-            />
+            android:textColor="@color/lugg_blue_dark"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toTopOf="@id/confirm_pickup_addr"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <ImageView
             android:id="@+id/confirm_pickup_addr_icon"
             android:layout_width="30dp"
             android:layout_height="27dp"
             app:layout_constraintTop_toTopOf="@id/pickup_text"
-            android:layout_marginHorizontal="20dp"
             android:layout_marginTop="2dp"
-            app:layout_constraintStart_toEndOf="@id/pickup_text"
-            android:tint="@color/lugg_white_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:tint="@color/lugg_blue_dark"
             android:src="@drawable/loction_confirmation_icon"
             app:flow_wrapMode="none"
             />
@@ -100,18 +103,19 @@
         <LinearLayout
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="@id/pickup_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:id="@+id/confirm_pickup_addr"
             >
             <TextView
                 android:id="@+id/complete_pickup_addr_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/lugg_white_dark"
+                android:textColor="@color/lugg_blue_dark"
                 android:text="700 W Compton blvd"
                 android:textSize="24dp"
 
@@ -121,7 +125,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Address line 2"
-                android:textColor="@color/lugg_white_dark"
+                android:textColor="@color/lugg_blue_dark"
                 android:textSize="18dp"
                 />
 
@@ -176,11 +180,11 @@
         android:layout_margin="20dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/btn_bg"
-        android:backgroundTint="@color/lugg_yellow"
+        android:backgroundTint="@color/lugg_button"
         android:paddingVertical="20dp"
         android:text="Schedule a Mover"
         android:textAllCaps="false"
-        android:textColor="@color/lugg_blue_dark"
+        android:textColor="@color/lugg_btn_txt_color"
         android:textSize="20dp"
         />
 

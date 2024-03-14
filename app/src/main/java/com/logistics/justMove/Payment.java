@@ -59,6 +59,7 @@ public class Payment extends AppCompatActivity implements RecyclerViewInterface 
         confirmationIntent = new Intent(Payment.this, Confirmation.class);
         
         payment_continue.setOnClickListener(e -> {
+            confirmationIntent.putExtras(getIntent().getExtras());
             if(getIntent().getExtras() != null && getIntent().getExtras().getStringArrayList("cards") != null){
                 if(getIntent().getExtras().getString("selectedCard") != null && !getIntent().getExtras().getString("selectedCard").isEmpty()){
                     confirmationIntent.putExtra("selectedCard",selectedCard);
@@ -66,18 +67,11 @@ public class Payment extends AppCompatActivity implements RecyclerViewInterface 
                 }
                 confirmationIntent.putStringArrayListExtra("cards",cardNumbers);
             }
-            confirmationIntent.putExtra("vehicle",getIntent().getExtras().getInt("vehicle"));
-            confirmationIntent.putExtra("price",getIntent().getExtras().getString("price"));
-            confirmationIntent.putExtra("date",getIntent().getExtras().getString("date"));
-            confirmationIntent.putExtra("time",getIntent().getExtras().getString("time"));
-            confirmationIntent.putExtra("pk_addr_1", getIntent().getExtras().getString("pk_addr_1"));
-            confirmationIntent.putExtra("pk_addr_2", getIntent().getExtras().getString("pk_addr_2"));
-            confirmationIntent.putExtra("dl_addr_1", getIntent().getExtras().getString("dl_addr_1"));
-            confirmationIntent.putExtra("dl_addr_2", getIntent().getExtras().getString("dl_addr_2"));
             startActivity(confirmationIntent);
         });
 
         add_card.setOnClickListener(e -> {
+            paymentCardIntent.putExtras(getIntent().getExtras());
             if(getIntent().getExtras() != null && getIntent().getExtras().getStringArrayList("cards") != null){
                 if(getIntent().getExtras().getString("selectedCard") != null && !getIntent().getExtras().getString("selectedCard").isEmpty()){
                     paymentCardIntent.putExtra("selectedCard",selectedCard);
@@ -85,19 +79,12 @@ public class Payment extends AppCompatActivity implements RecyclerViewInterface 
                 }
                 paymentCardIntent.putStringArrayListExtra("cards",cardNumbers);
             }
-            paymentCardIntent.putExtra("vehicle",getIntent().getExtras().getInt("vehicle"));
-            paymentCardIntent.putExtra("price",getIntent().getExtras().getString("price"));
-            paymentCardIntent.putExtra("date",getIntent().getExtras().getString("date"));
-            paymentCardIntent.putExtra("time",getIntent().getExtras().getString("time"));
-            paymentCardIntent.putExtra("pk_addr_1", getIntent().getExtras().getString("pk_addr_1"));
-            paymentCardIntent.putExtra("pk_addr_2", getIntent().getExtras().getString("pk_addr_2"));
-            paymentCardIntent.putExtra("dl_addr_1", getIntent().getExtras().getString("dl_addr_1"));
-            paymentCardIntent.putExtra("dl_addr_2", getIntent().getExtras().getString("dl_addr_2"));
             startActivity(paymentCardIntent);
             
         });
 
         back_btn.setOnClickListener(e -> {
+            confirmationIntent.putExtras(getIntent().getExtras());
             if(getIntent().getExtras() != null && getIntent().getExtras().getStringArrayList("cards") != null){
                 if(getIntent().getExtras().getString("selectedCard") != null && !getIntent().getExtras().getString("selectedCard").isEmpty()){
                     confirmationIntent.putExtra("selectedCard",selectedCard);
@@ -105,14 +92,6 @@ public class Payment extends AppCompatActivity implements RecyclerViewInterface 
                 }
                 confirmationIntent.putStringArrayListExtra("cards",cardNumbers);
             }
-            confirmationIntent.putExtra("vehicle",getIntent().getExtras().getInt("vehicle"));
-            confirmationIntent.putExtra("price",getIntent().getExtras().getString("price"));
-            confirmationIntent.putExtra("date",getIntent().getExtras().getString("date"));
-            confirmationIntent.putExtra("time",getIntent().getExtras().getString("time"));
-            confirmationIntent.putExtra("pk_addr_1", getIntent().getExtras().getString("pk_addr_1"));
-            confirmationIntent.putExtra("pk_addr_2", getIntent().getExtras().getString("pk_addr_2"));
-            confirmationIntent.putExtra("dl_addr_1", getIntent().getExtras().getString("dl_addr_1"));
-            confirmationIntent.putExtra("dl_addr_2", getIntent().getExtras().getString("dl_addr_2"));
             startActivity(confirmationIntent);
         });
 

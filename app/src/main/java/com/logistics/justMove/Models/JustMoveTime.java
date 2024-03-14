@@ -6,11 +6,13 @@ public class JustMoveTime {
         this.label = label;
         this.value = value;
         this.background = background;
+        this.textColor = "#274378";
     }
 
     private String label;
     private  String value;
     private int background;
+    private String textColor;
 
     public String getLabel() {
         return label;
@@ -34,5 +36,12 @@ public class JustMoveTime {
 
     public void setBackground(int background) {
         this.background = background;
+    }
+
+    public String getTextColor() {
+        return textColor;
+    }
+    public void setTextColor(String textColor) {
+        this.textColor = textColor;
     }
 }

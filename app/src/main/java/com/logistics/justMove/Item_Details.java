@@ -25,28 +25,12 @@ public class Item_Details extends AppCompatActivity {
         back_btn = findViewById(R.id.item_details_back_arrow);
 
         intent = new Intent(Item_Details.this, Confirmation.class);
-
-        intent.putExtra("date",getIntent().getExtras().getString("date"));
-        intent.putExtra("time",getIntent().getExtras().getString("time"));
-        intent.putExtra("vehicle",getIntent().getExtras().getInt("vehicle"));
-        intent.putExtra("price",getIntent().getExtras().getString("price"));
-        intent.putExtra("pk_addr_1", getIntent().getExtras().getString("pk_addr_1"));
-        intent.putExtra("pk_addr_2", getIntent().getExtras().getString("pk_addr_2"));
-        intent.putExtra("dl_addr_1", getIntent().getExtras().getString("dl_addr_1"));
-        intent.putExtra("dl_addr_2", getIntent().getExtras().getString("dl_addr_2"));
-
+        intent.putExtras(getIntent().getExtras());
         continue_btn.setOnClickListener(e -> startActivity(intent));
         next_btn.setOnClickListener(e -> startActivity(intent));
         back_btn.setOnClickListener(e -> {
             Intent timeIntent = new Intent(Item_Details.this, SetTime.class);
-            timeIntent.putExtra("vehicle",getIntent().getExtras().getInt("vehicle"));
-            timeIntent.putExtra("price",getIntent().getExtras().getString("price"));
-            timeIntent.putExtra("date",getIntent().getExtras().getString("date"));
-            timeIntent.putExtra("time",getIntent().getExtras().getString("time"));
-            timeIntent.putExtra("pk_addr_1", getIntent().getExtras().getString("pk_addr_1"));
-            timeIntent.putExtra("pk_addr_2", getIntent().getExtras().getString("pk_addr_2"));
-            timeIntent.putExtra("dl_addr_1", getIntent().getExtras().getString("dl_addr_1"));
-            timeIntent.putExtra("dl_addr_2", getIntent().getExtras().getString("dl_addr_2"));
+            timeIntent.putExtras(getIntent().getExtras());
             startActivity(timeIntent);
         });
 
