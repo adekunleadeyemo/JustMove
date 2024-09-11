@@ -60,15 +60,18 @@ public class locationSearch extends AppCompatActivity {
     private AutocompleteSessionToken sessionToken;
     androidx.appcompat.widget.SearchView searchPlace;
 
+    private String placeKey;
+
     private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        setContentView(R.layout.activity_google_autocomplete_search);
+       placeKey = "";
 
         if (!Places.isInitialized()) {
-            Places.initialize(getApplicationContext(), "AIzaSyAj0dpREmWBTwbyPMGYLMHolWXM8-hituk");
+            Places.initialize(getApplicationContext(), placeKey);
         }
 
 //      Initialize members
