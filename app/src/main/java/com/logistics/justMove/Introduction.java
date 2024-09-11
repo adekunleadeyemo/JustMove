@@ -52,7 +52,7 @@ public class Introduction extends AppCompatActivity {
         nav_bk.setOnClickListener(e -> backwardNavigation());
 
         get_started_btn.setOnClickListener( e -> {
-            Intent intent = new Intent(Introduction.this, Location_Select.class);
+            Intent intent = new Intent(Introduction.this, Location.class);
             intent.putExtra("change","pickup");
             startActivity(intent);
         });

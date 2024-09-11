@@ -68,11 +68,11 @@ public class locationSearch extends AppCompatActivity {
        setContentView(R.layout.activity_google_autocomplete_search);
 
         if (!Places.isInitialized()) {
-            Places.initialize(getApplicationContext(), "AIzaSyA3h6cKqEri6qxNLO9Gc1iv8J5-JudKcLY");
+            Places.initialize(getApplicationContext(), "AIzaSyAj0dpREmWBTwbyPMGYLMHolWXM8-hituk");
         }
 
 //      Initialize members
-        intent = new Intent(locationSearch.this, Location_Select.class);
+        intent = new Intent(locationSearch.this, Location.class);
         searchPlace = findViewById(R.id.search_place);
         placesClient = Places.createClient(this);
         queue = Volley.newRequestQueue(this);

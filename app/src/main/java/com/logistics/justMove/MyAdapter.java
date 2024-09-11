@@ -74,6 +74,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyviewHolder> {
                 holder.dateText.setText(myDates.get(position).getLabel());
                 holder.dateText.setBackgroundResource(myDates.get(position).getBackground());
                 holder.dateText.setTextColor(Color.parseColor(myDates.get(position).getTextColor()));
+                holder.dateText.setText("timestamp can be recalibrated to suit what is being stepped on at the minimum end of the speck");
                 break;
         }
 
